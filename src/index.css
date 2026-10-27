@@ -1,0 +1,748 @@
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Suez+One&display=swap');
+
+/* ===== פלטת צבעים: חום / שמנת ===== */
+:root {
+  --cream: #fbf6ee;
+  --cream-deep: #f4eadb;
+  --crust: #e8d5bc;
+  --caramel: #b9783f;
+  --caramel-light: #d9a46c;
+  --brown: #6b4226;
+  --brown-dark: #3e2a1e;
+  --text: #4a3728;
+  --muted: #8a7461;
+  --danger: #a63d2a;
+
+  --radius: 16px;
+  --shadow-sm: 0 2px 8px rgba(62, 42, 30, 0.08);
+  --shadow: 0 14px 34px -14px rgba(62, 42, 30, 0.3);
+
+  --font-body: 'Heebo', system-ui, 'Segoe UI', sans-serif;
+  --font-display: 'Suez One', 'Heebo', serif;
+
+  /* דריסת משתני Bootstrap */
+  --bs-body-bg: var(--cream);
+  --bs-body-color: var(--text);
+  --bs-body-font-family: var(--font-body);
+  --bs-border-color: var(--crust);
+  --bs-link-color: var(--brown);
+  --bs-link-hover-color: var(--caramel);
+
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  background-image: radial-gradient(rgba(185, 120, 63, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
+  font-family: var(--font-body);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--brown-dark);
+  font-weight: 400;
+}
+
+/* ===== כותרת עליונה ===== */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 72px;
+  padding: 0.85rem 1.5rem;
+  background: linear-gradient(135deg, var(--brown-dark), var(--brown));
+  border-bottom: 4px solid var(--caramel);
+  box-shadow: var(--shadow-sm);
+}
+
+.brand-logo {
+  order: -1;
+  margin-inline-end: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--cream);
+}
+
+.brand-logo::before {
+  content: '🥐';
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cream);
+  font-size: 1.4rem;
+}
+
+.btn-nav {
+  --bs-btn-color: var(--cream);
+  --bs-btn-border-color: rgba(251, 246, 238, 0.35);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: rgba(251, 246, 238, 0.12);
+  --bs-btn-hover-border-color: var(--cream);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: rgba(251, 246, 238, 0.2);
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+}
+
+.btn-logout {
+  --bs-btn-color: var(--brown-dark);
+  --bs-btn-bg: var(--caramel-light);
+  --bs-btn-border-color: var(--caramel-light);
+  --bs-btn-hover-color: var(--brown-dark);
+  --bs-btn-hover-bg: var(--cream);
+  --bs-btn-hover-border-color: var(--cream);
+  border-radius: 999px;
+  padding: 0.4rem 1.1rem;
+  font-weight: 500;
+}
+
+/* ===== כותרת תחתונה ===== */
+.site-footer {
+  margin-top: auto;
+  padding: 1.5rem 1rem;
+  background: var(--brown-dark);
+  border-top: 4px solid var(--caramel);
+  color: var(--cream);
+}
+
+.footer-link {
+  color: var(--cream-deep);
+  opacity: 0.85;
+  font-size: 0.95rem;
+}
+
+.footer-link + .footer-link {
+  border-inline-start: 1px solid rgba(251, 246, 238, 0.3);
+  padding-inline-start: 1.5rem;
+}
+
+/* ===== כפתורים ===== */
+.btn-brown {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--brown);
+  --bs-btn-border-color: var(--brown);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--brown-dark);
+  --bs-btn-hover-border-color: var(--brown-dark);
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--brown-dark);
+  --bs-btn-active-border-color: var(--brown-dark);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--caramel-light);
+  --bs-btn-disabled-border-color: var(--caramel-light);
+  --bs-btn-focus-shadow-rgb: 185, 120, 63;
+  border-radius: 999px;
+  font-weight: 500;
+  padding-inline: 1.4rem;
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.btn-brown:active {
+  transform: scale(0.97);
+}
+
+.btn-brown.btn-sm {
+  padding-inline: 1rem;
+}
+
+.btn-link-brown {
+  --bs-btn-color: var(--caramel);
+  --bs-btn-hover-color: var(--brown);
+  --bs-btn-padding-x: 0.25rem;
+  --bs-btn-padding-y: 0;
+  font-size: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  vertical-align: baseline;
+}
+
+.cart-fab {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  padding: 0.75rem 1.4rem;
+  box-shadow: var(--shadow);
+}
+
+.cart-fab::before {
+  content: '🛒';
+  margin-inline-end: 0.5rem;
+}
+
+/* ===== טפסים ===== */
+.form-label {
+  font-weight: 500;
+  color: var(--brown-dark);
+  margin-bottom: 0.35rem;
+}
+
+.form-control,
+.form-select {
+  background-color: #fffdf9;
+  border-color: var(--crust);
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  color: var(--text);
+}
+
+.form-control::placeholder {
+  color: #b7a593;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--caramel);
+  box-shadow: 0 0 0 0.2rem rgba(185, 120, 63, 0.22);
+  background-color: #fff;
+}
+
+.field-error {
+  min-height: 1.2em;
+  margin: 0.3rem 0 0;
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+/* ===== כרטיסים ===== */
+.card-bakery {
+  background: #fff;
+  border: 1px solid var(--crust);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.auth-card,
+.form-card,
+.item-card {
+  width: calc(100% - 32px);
+  margin-inline: auto;
+}
+
+.auth-card {
+  max-width: 420px;
+  margin-bottom: 3rem;
+  border-top: 5px solid var(--caramel);
+}
+
+.form-card {
+  max-width: 560px;
+  border-top: 5px solid var(--caramel);
+}
+
+.item-card {
+  max-width: 520px;
+  text-align: center;
+}
+
+/* ===== כותרות עמוד וטקסטים ===== */
+.page-title {
+  font-family: var(--font-display);
+  color: var(--brown-dark);
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 2rem 0 1.25rem;
+}
+
+.page-title::after {
+  content: '';
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: 0.6rem auto 0;
+  border-radius: 3px;
+  background: var(--caramel);
+}
+
+.welcome-banner {
+  max-width: 720px;
+  margin: 2.5rem auto 1.75rem;
+  padding: 0 16px;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+.status-text {
+  text-align: center;
+  color: var(--muted);
+  padding: 1.25rem 0;
+}
+
+.status-text::before {
+  content: '';
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  margin-inline-end: 0.5rem;
+  vertical-align: -0.15em;
+  border: 2px solid var(--crust);
+  border-top-color: var(--caramel);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.alert-bakery {
+  max-width: 520px;
+  margin-inline: auto;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.status-chip {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1.5rem;
+  padding: 0.35rem 1.1rem;
+  border-radius: 999px;
+  background: var(--cream-deep);
+  color: var(--brown);
+  font-weight: 500;
+}
+
+/* ===== עמוד הזמנות ===== */
+.search-input {
+  width: calc(100% - 32px);
+  max-width: 480px;
+  margin: 0 auto 1.25rem;
+  border-radius: 999px;
+  padding-inline-start: 2.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%23b9783f' stroke-width='2.2' stroke-linecap='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+.search-input:focus {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%236b4226' stroke-width='2.2' stroke-linecap='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E");
+}
+
+.catalog,
+.results {
+  width: calc(100% - 32px);
+  max-width: 1100px;
+  margin: 0 auto 6rem;
+}
+
+.category-select {
+  max-width: 320px;
+  margin: 0 auto 1.75rem;
+  font-weight: 500;
+  color: var(--brown);
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  padding: 0;
+}
+
+.product-grid > .empty-message {
+  list-style: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1.4rem 1.2rem;
+  background: #fff;
+  border: 1px solid var(--crust);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  color: var(--brown-dark);
+  font-weight: 500;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card::before {
+  content: '🧁';
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--cream-deep);
+  font-size: 2rem;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.product-card .btn {
+  margin-top: auto;
+  width: 100%;
+}
+
+/* ===== טבלת מלאי ===== */
+.table-bakery {
+  --bs-table-bg: #fff;
+  --bs-table-striped-bg: var(--cream);
+  --bs-table-hover-bg: var(--cream-deep);
+  --bs-table-color: var(--text);
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--crust);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.table-bakery thead th {
+  background: var(--brown);
+  color: var(--cream);
+  font-weight: 500;
+  border: none;
+  padding: 0.9rem 0.75rem;
+}
+
+.table-bakery td {
+  border-color: var(--cream-deep);
+  padding: 0.75rem;
+}
+
+.manage-page {
+  overflow-x: auto;
+}
+
+/* שורת הכותרת בעמוד ניהול המלאי - הכותרת במרכז, הכפתור בצד שמאל */
+.manage-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-product-btn {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.add-product-btn:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+.add-product-btn:active {
+  transform: translateY(-50%) scale(0.97);
+}
+
+/* במסך צר - הכפתור יורד מתחת לכותרת */
+@media (max-width: 576px) {
+  .manage-header {
+    flex-direction: column;
+  }
+
+  .add-product-btn {
+    position: static;
+    transform: none;
+    margin-bottom: 1rem;
+  }
+
+  .add-product-btn:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ===== ניהול מוצר ===== */
+.item-label {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.item-detail {
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+/* ===== היסטוריה ===== */
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: calc(100% - 32px);
+  max-width: 640px;
+  margin: 0 auto 0.75rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--crust);
+  border-inline-start: 4px solid var(--caramel);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.history-item::before {
+  content: '🧾';
+  font-size: 1.3rem;
+}
+
+.history-item p {
+  margin: 0;
+}
+
+.order-details {
+  width: calc(100% - 32px);
+  max-width: 640px;
+  margin: -0.5rem auto 0.75rem;
+  padding: 1rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--crust);
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.order-line {
+  padding: 0.4rem 0;
+  border-top: 1px dashed var(--crust);
+}
+
+.arrow-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--caramel);
+  /* דוחף את החץ לקצה השמאלי של ה-div (הדף ב-RTL) */
+  margin-right: auto;
+}
+
+/* ===== רשימת לקוחות ===== */
+.customer-list {
+  width: calc(100% - 32px);
+  max-width: 760px;
+  margin: 0 auto 2rem;
+  padding: 0;
+}
+
+.customer-item {
+  margin-bottom: 0.6rem;
+  padding: 0.9rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--crust);
+  border-inline-start: 4px solid var(--caramel);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== אודות ומדיניות ===== */
+.page-text {
+  width: calc(100% - 32px);
+  max-width: 720px;
+  margin: 3rem auto;
+  font-size: 1.15rem;
+  line-height: 1.9;
+  text-align: center;
+}
+
+.rules-list {
+  width: calc(100% - 32px);
+  max-width: 640px;
+  margin: 3rem auto;
+  padding: 0;
+}
+
+.rules-list li {
+  list-style: none;
+  margin-bottom: 0.6rem;
+  padding: 0.9rem 1.25rem;
+  background: #fff;
+  border: 1px solid var(--crust);
+  border-inline-start: 4px solid var(--caramel);
+  border-radius: 12px;
+}
+
+.cart-item {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--crust);
+}
+
+/* ===== כמות בדף ההזמנות ===== */
+.product-card .qty-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: auto;
+}
+
+.product-card .qty-control .btn {
+  width: auto;
+  min-width: 2.25rem;
+  margin: 0;
+}
+
+.product-card .qty-control span {
+  flex: 1;
+}
+
+/* ===== עגלה ===== */
+.cart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  width: calc(100% - 32px);
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+
+.cart-grid > p {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+}
+
+.cart-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--crust);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-card-body {
+  position: relative;
+  flex: 1;
+  padding: 1rem 1.2rem;
+  background: var(--cream-deep);
+  color: var(--brown-dark);
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.cart-remove {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.3rem 0.5rem;
+  background: #fff;
+  border: 1px solid var(--danger);
+  color: var(--danger);
+  font-size: 0.85rem;
+}
+
+.cart-img {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 0.5rem;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 2rem;
+  object-fit: cover;
+}
+
+.cart-qty {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: var(--brown);
+  color: var(--cream);
+}
+
+.cart-qty > * {
+  display: grid;
+  place-items: center;
+  padding: 0.6rem;
+  border-inline-start: 1px solid var(--cream);
+  font-weight: 700;
+}
+
+.cart-qty > :first-child {
+  border-inline-start: none;
+}
+
+.cart-qty button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.3rem;
+}
+
+/* ===== עמוד אישור תשלום ===== */
+.payment-notice {
+  width: calc(100% - 32px);
+  max-width: 640px;
+  margin: 2.5rem auto 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: #fff;
+  border: 1px solid var(--crust);
+  border-inline-start: 5px solid var(--caramel);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  line-height: 1.9;
+  color: var(--text);
+  text-align: center;
+}
+
+.payment-total {
+  width: fit-content;
+  margin: 0 auto 1.5rem;
+  padding: 0.75rem 2rem;
+  background: var(--cream-deep);
+  border: 1px solid var(--crust);
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--brown-dark);
+}
+
+.payment-confirm {
+  display: block;
+  margin: 0 auto 3rem;
+  font-size: 1.1rem;
+  padding-block: 0.6rem;
+}
+
+@media (max-width: 576px) {
+  .card-bakery { padding: 1.4rem; }
+  .payment-notice { font-size: 1rem; padding: 1rem; }
+  .payment-total { font-size: 1.3rem; }
+  .page-title { font-size: 1.8rem; }
+  .site-header { padding: 0.75rem 1rem; }
+  .cart-fab { bottom: 16px; left: 16px; }
+}
