@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import type Customer from "../models/customer";
@@ -11,7 +12,7 @@ async function getAllCustomersForMannager(): Promise<Customer[]> {
 
 
     const allCustomers = await axios.get<Customer[]>(
-        "http://localhost:5000/api/admin/customers", {
+        `${API_URL}/api/admin/customers`, {
         headers: { Authorization: `Bearer ${token}` }
     }
 

@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -39,7 +40,7 @@ const AddProduct = () => {
     // הפונקציה מופעלת רק אם כל הנתונים עברו את האימות בהצלחה
     const onSubmit = async (data: AddProductFormData) => {
         try {
-            await axios.post("http://localhost:5000/api/products", {
+            await axios.post(`${API_URL}/api/products`, {
                 name: data.name,
                 company: data.company,
                 category: data.category,

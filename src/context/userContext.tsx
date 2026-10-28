@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import axios from "axios";
 import type { User } from "../models/user";
@@ -27,7 +28,7 @@ export function UserProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    axios.get("http://localhost:5000/api/auth/me", {
+    axios.get(`${API_URL}/api/auth/me`, {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => setUser(response.data.user))

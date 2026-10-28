@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 import { useEffect, useState } from "react";
 import Header from "../components/Header"
 import axios from "axios";
@@ -13,9 +14,9 @@ import { unitOptions } from "../schemas/addProductSchema";
 
 const Order = () => {
 
-    const baseAPI = "http://localhost:5000/api/products?category="
+    const baseAPI = `${API_URL}/api/products?category=`
     const categories = [
-        { key: "all", label: "הצג הכל", url: `http://localhost:5000/api/products` },
+        { key: "all", label: "הצג הכל", url: `${API_URL}/api/products` },
         { key: "creams", label: "קרמים ומליות", url: `${baseAPI}creams_fillings` },
         { key: "doughs", label: "בצקים ובסיסים מוכנים", url: `${baseAPI}doughs_bases` },
         { key: "chocolates", label: "שוקולדים", url: `${baseAPI}chocolates` },

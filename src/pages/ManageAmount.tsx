@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
@@ -15,7 +16,7 @@ async function getAllProducts(): Promise<Product[]> {
         throw new Error("  יש להתחבר מחדש.");
     }
     const response = await axios.get<{ products: Product[] }>(
-        "http://localhost:5000/api/admin/inventory", {
+        `${API_URL}/api/admin/inventory`, {
         headers: {
             Authorization: `Bearer ${token}`,
         },

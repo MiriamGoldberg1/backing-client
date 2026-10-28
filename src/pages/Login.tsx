@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -35,7 +36,7 @@ const Login = () => {
     // הפונקציה מופעלת רק אם כל הנתונים עברו את האימות בהצלחה
     const onSumbit = async (data: LoginFormData) => {
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/register", {
+            const res = await axios.post(`${API_URL}/api/auth/register`, {
                 fullName: data.fullName,
                 email: data.email,
                 password: data.password,

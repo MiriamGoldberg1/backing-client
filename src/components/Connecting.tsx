@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 import axios from "axios"
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -33,7 +34,7 @@ const Connecting = () => {
                         setError("");
                         console.log("on click")
                         try {
-                            const response = await axios.post("http://localhost:5000/api/auth/login", { email: email, password: password });
+                            const response = await axios.post(`${API_URL}/api/auth/login`, { email: email, password: password });
                             // console.log(response.data.user.role);
                             // console.log(response.data.user);
                             localStorage.setItem("token", response.data.token);
@@ -66,4 +67,4 @@ const Connecting = () => {
     </>
 }
 export default Connecting
-// post("http://localhost:5000/api/auth/login",
+// post(`${API_URL}/api/auth/login`,

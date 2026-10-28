@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 //בזמן לחיצה על כפתור "נהל מוצר זה" של מוצר מסוים, המנהל ינווט לפה
 //עם הID של המוצר וככה נשנה את 
 // מחיר או כמות במלאי של מוצר זה
@@ -14,7 +15,7 @@ const auth = () => ({ Authorization: `Bearer ${localStorage.getItem("token")}` }
 // שליפת מוצר אחד by id
 async function getProductById(id: string): Promise<Product> {
     const response = await axios.get<Product>(
-        `http://localhost:5000/api/products/${id}`,
+        `${API_URL}/api/products/${id}`,
         { headers: auth() }
     );
     return response.data;
@@ -24,7 +25,7 @@ async function getProductById(id: string): Promise<Product> {
 //עדכון כמות למוצר זה
 async function ChangeAmount(id: string, amount: number) {
     const response = await axios.patch(
-        `http://localhost:5000/api/products/${id}/stock`,
+        `${API_URL}/api/products/${id}/stock`,
         { stock: amount },
         { headers: auth() }
     );
@@ -34,7 +35,7 @@ async function ChangeAmount(id: string, amount: number) {
 //עדכון מחיר למוצר זה - העלאה או הפחתה בסכום (₪)
 async function ChangePrice(id: string, direction: "increase" | "decrease", amount: number) {
     const response = await axios.patch(
-        `http://localhost:5000/api/products/${id}/price/${direction}`,
+        `${API_URL}/api/products/${id}/price/${direction}`,
         { amount },
         { headers: auth() }
     );

@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 // בדף זה לעשות בדיקה האם המחובר הור מנהל\לקוח
 // ולפי זה לעשות את הקריאת שרת המתאימה
 // אין צורך בעוד 2 קומפוננטות נפרדות
@@ -14,7 +15,7 @@ import Header from "../components/Header";
 async function managerHistory() {
 
     const token = localStorage.getItem("token");
-    const res = await axios.get<Order[]>("http://localhost:5000/api/admin/orders", {
+    const res = await axios.get<Order[]>(`${API_URL}/api/admin/orders`, {
         headers: { Authorization: `Bearer ${token}` }
     }
 
@@ -29,7 +30,7 @@ async function customerHistory() {
 
     const token = localStorage.getItem("token");
 
-    const res = await axios.get<Order[]>("http://localhost:5000/api/orders/my", {
+    const res = await axios.get<Order[]>(`${API_URL}/api/orders/my`, {
         headers: { Authorization: `Bearer ${token}` }
     }
     )

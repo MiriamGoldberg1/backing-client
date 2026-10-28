@@ -1,3 +1,4 @@
+import { API_URL } from "../config";
 import { useLocation, useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -15,7 +16,7 @@ const AsPayment = () => {
     async function confirmPayment() {
         const token = localStorage.getItem("token");
         try {
-            await axios.post("http://localhost:5000/api/orders",
+            await axios.post(`${API_URL}/api/orders`,
                 { items: items.map(i => ({ productId: i.id, quantity: i.qty })) },
                 { headers: { Authorization: `Bearer ${token}` } }
             );
